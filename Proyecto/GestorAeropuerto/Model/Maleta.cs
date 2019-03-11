@@ -11,5 +11,7 @@ namespace GestorAeropuerto.Model
         public int MaletaId { get; set; }
 
         public float Peso { get; set; }
+
+        public virtual Pasajero Pasajero { get; set; }
     }
 }

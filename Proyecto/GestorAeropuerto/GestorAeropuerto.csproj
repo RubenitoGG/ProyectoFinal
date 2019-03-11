@@ -76,6 +76,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DAL\AerolineaRepositorio.cs" />
+    <Compile Include="DAL\AvionRepositorio.cs" />
+    <Compile Include="DAL\BilleteRepositorio.cs" />
+    <Compile Include="DAL\CargoRepositorio.cs" />
+    <Compile Include="DAL\EmpleadoRepositorio.cs" />
+    <Compile Include="DAL\GenericRepository.cs" />
+    <Compile Include="DAL\GestorAeropuertoContext.cs" />
+    <Compile Include="DAL\MaletaRepositorio.cs" />
+    <Compile Include="DAL\PasajeroRepositorio.cs" />
+    <Compile Include="DAL\UnitOfWork.cs" />
+    <Compile Include="DAL\VueloRepositorio.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

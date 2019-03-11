@@ -17,5 +17,9 @@ namespace GestorAeropuerto.Model
 
         [Required(ErrorMessage = "Número de pasaporte obligatorio")]
         public int NumPasaporte { get; set; }
+
+        public ICollection<Maleta> Maletas { get; set; }
+
+        public virtual Billete Billete { get; set; }
     }
 }

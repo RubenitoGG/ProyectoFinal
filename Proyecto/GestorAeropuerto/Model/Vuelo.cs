@@ -22,5 +22,9 @@ namespace GestorAeropuerto.Model
 
         [Required(ErrorMessage = "Salida obligatoria")]
         public DateTime Salida { get; set; }
+
+        public ICollection<Billete> Billetes { get; set; }
+
+        public ICollection<Avion> Aviones { get; set; }
     }
 }

@@ -19,5 +19,7 @@ namespace GestorAeropuerto.Model
 
         [Required(ErrorMessage = "Capacidad obligatoria")]
         public int Capacidad { get; set; }
+
+        public virtual Vuelo Vuelo { get; set; }
     }
 }

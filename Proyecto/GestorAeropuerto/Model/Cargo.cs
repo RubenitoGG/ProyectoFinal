@@ -17,5 +17,7 @@ namespace GestorAeropuerto.Model
 
         [Required(ErrorMessage = "Sueldo obligatorio")]
         public double Sueldo { get; set; }
+
+        public ICollection<Empleado> Empleados { get; set; }
     }
 }

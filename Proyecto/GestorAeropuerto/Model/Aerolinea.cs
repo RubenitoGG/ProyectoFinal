@@ -16,5 +16,9 @@ namespace GestorAeropuerto.Model
 
         [Required(ErrorMessage = "Telefono obligatorio")]
         public string Telefono { get; set; }
+
+        public ICollection<Vuelo> Vuelos { get; set; }
+
+        public ICollection<Empleado> Empleados { get; set; }
     }
 }

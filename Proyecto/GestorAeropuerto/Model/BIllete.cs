@@ -20,5 +20,9 @@ namespace GestorAeropuerto.Model
 
         [Required(ErrorMessage = "Número de asiento obligatorio")]
         public int NumAsiento { get; set; }
+
+        public virtual Pasajero Pasajero { get; set; }
+
+        public virtual Vuelo Vuelo { get; set; }
     }
 }

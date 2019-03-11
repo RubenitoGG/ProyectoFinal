@@ -26,5 +26,9 @@ namespace GestorAeropuerto.Model
         [Required(ErrorMessage = "Apellidos obligatorios")]
         [StringLength(50, MinimumLength = 2)]
         public string Pais { get; set; }
+
+        public virtual Aerolinea Aerolinea { get; set; }
+
+        public virtual Cargo Cargo { get; set; }
     }
 }
