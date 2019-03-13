@@ -19,6 +19,7 @@ namespace GestorAeropuerto.DAL
         private MaletaRepositorio maletaRepositorio;
         private PasajeroRepositorio pasajeroRepositorio;
         private VueloRepositorio vueloRepositorio;
+        private UsuarioRepositorio usuarioRepositorio;
 
         public AerolineaRepositorio AerolineaRepositorio
         {
@@ -105,6 +106,17 @@ namespace GestorAeropuerto.DAL
                     vueloRepositorio = new VueloRepositorio(context);
 
                 return vueloRepositorio;
+            }
+        }
+
+        public UsuarioRepositorio UsuarioRepositorio
+        {
+            get
+            {
+                if (usuarioRepositorio == null)
+                    usuarioRepositorio = new UsuarioRepositorio(context);
+
+                return usuarioRepositorio;
             }
         }
 

@@ -20,6 +20,7 @@ namespace GestorAeropuerto.DAL
         public virtual DbSet<Maleta> Maleta { get; set; }
         public virtual DbSet<Pasajero> Pasajero {get;set;}
         public virtual DbSet<Vuelo> Vuelo { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

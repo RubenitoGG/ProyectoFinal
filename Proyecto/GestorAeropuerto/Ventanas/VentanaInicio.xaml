@@ -1,0 +1,17 @@
+﻿<Window x:Class="GestorAeropuerto.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestorAeropuerto"
+        mc:Ignorable="d"
+        Title="AeroJuju" Height="700" Width="1024" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="BotonComprar" Content="Comprar vuelo" HorizontalAlignment="Center" Margin="331,378,331,225" VerticalAlignment="Center" Width="356" Height="68"/>
+        <Button x:Name="BotonAdministrador" Content="Entrar Modo Administrador" HorizontalAlignment="Center" Margin="368,451,368,192" VerticalAlignment="Center" Width="282" Height="28" Background="#002196F3" BorderBrush="#002196F3" Foreground="#FF078507" Click="BotonAdministrador_Click"/>
+
+    </Grid>
+</Window>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GestorAeropuerto.Ventanas;
 
 namespace GestorAeropuerto
 {
@@ -23,6 +24,12 @@ namespace GestorAeropuerto
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void BotonAdministrador_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaLogin nuevaVentana = new VentanaLogin(this);
+            nuevaVentana.Show();
         }
     }
 }

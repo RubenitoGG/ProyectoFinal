@@ -1,0 +1,18 @@
+﻿<Window x:Class="GestorAeropuerto.Ventanas.VentanaAdministrador"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestorAeropuerto.Ventanas"
+        mc:Ignorable="d" Height="700" Width="1024" ResizeMode="NoResize" Title="AeroJuju">
+    <Grid>
+        <Menu HorizontalAlignment="Center" Height="35" VerticalAlignment="Top" Width="1024" Background="#FFDBF0FF" Margin="-4,0">
+            <MenuItem x:Name="menuUsuarios" FontSize="14" Header="Usuarios" Height="35" Width="141" Background="#0060A8DA" Click="MenuUsuarios_Click"/>
+            <MenuItem x:Name="menuAerolineas" FontSize="14" Header="Aerolineas" Height="35" Width="162" Background="#0060A8DA" Click="MenuAerolineas_Click"/>
+            <MenuItem x:Name="menuVuelos" FontSize="14" Header="Vuelos" Height="35" Width="119" Background="#0060A8DA"/>
+            <MenuItem x:Name="menuEmpleados" FontSize="14" Header="Empleados" Height="35" Width="175" Background="#0060A8DA"/>
+        </Menu>
+        <Frame x:Name="frameVentana" Content="" HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="996" Margin="10,40,0,0" NavigationUIVisibility="Hidden"/>
+
+    </Grid>
+</Window>

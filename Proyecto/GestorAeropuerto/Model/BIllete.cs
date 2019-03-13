@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,9 @@ namespace GestorAeropuerto.Model
 
         [Required(ErrorMessage = "Número de asiento obligatorio")]
         public int NumAsiento { get; set; }
+
+        [Key, ForeignKey("Pasajero")]
+        public int PasajeroId { get; set; }
 
         public virtual Pasajero Pasajero { get; set; }
 

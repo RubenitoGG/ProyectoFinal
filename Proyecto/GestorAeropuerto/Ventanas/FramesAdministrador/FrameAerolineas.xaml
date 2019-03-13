@@ -1,0 +1,19 @@
+﻿<Page x:Class="GestorAeropuerto.Ventanas.FramesAdministrador.FrameAerolineas"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GestorAeropuerto.Ventanas.FramesAdministrador"
+      mc:Ignorable="d" 
+      d:DesignHeight="619" d:DesignWidth="996"
+      Title="FrameAerolineas">
+
+    <Grid Background="White">
+        <Label Content="AEROLINEAS" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontFamily="Segoe Print" FontSize="36" FontWeight="Bold"/>
+        <ListBox x:Name="listaAerolineas" HorizontalAlignment="Left" Height="469" Margin="194,108,0,0" VerticalAlignment="Top" Width="278" BorderBrush="#FF2196F3" BorderThickness="1"/>
+        <TextBox x:Name="txt_buscar" HorizontalAlignment="Left" Height="39" Margin="504,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225" FontSize="16" IsReadOnly="True"/>
+        <Button x:Name="BotonEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="504,538,0,0" VerticalAlignment="Top" Width="225" Height="39" Background="#FFFF4D4D" BorderBrush="#FFFF4D4D"/>
+        <Button x:Name="BotonAñadir" Content="Añadir" HorizontalAlignment="Left" Margin="504,489,0,0" VerticalAlignment="Top" Width="225" Height="39"/>
+        <Button x:Name="BotonBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="504,207,0,0" VerticalAlignment="Top" Width="225" Height="38"/>
+    </Grid>
+</Page>
