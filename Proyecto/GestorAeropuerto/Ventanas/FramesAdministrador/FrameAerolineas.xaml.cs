@@ -35,6 +35,23 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
 
             // Cambiamos el color del menú de la ventana:
             ventana.CambiarColor("Aerolinea");
+            MostrarAerolineas();
+        }
+
+        private void MostrarAerolineas()
+        {
+            aerolineas = uow.AerolineaRepositorio.GetAll();
+
+            listaAerolineas.Items.Clear();
+            foreach (Aerolinea aerolinea in aerolineas)
+            {
+                listaAerolineas.Items.Add(aerolinea.Nombre);
+            }
+        }
+
+        private void BotonAñadir_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

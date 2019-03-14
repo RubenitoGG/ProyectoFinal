@@ -11,9 +11,11 @@
     <Grid Background="White">
         <Label Content="AEROLINEAS" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontFamily="Segoe Print" FontSize="36" FontWeight="Bold"/>
         <ListBox x:Name="listaAerolineas" HorizontalAlignment="Left" Height="469" Margin="194,108,0,0" VerticalAlignment="Top" Width="278" BorderBrush="#FF2196F3" BorderThickness="1"/>
-        <TextBox x:Name="txt_buscar" HorizontalAlignment="Left" Height="39" Margin="504,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225" FontSize="16" IsReadOnly="True"/>
+        <TextBox x:Name="txt_buscar" HorizontalAlignment="Left" Height="39" Margin="504,373,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225" FontSize="16" IsReadOnly="True"/>
         <Button x:Name="BotonEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="504,538,0,0" VerticalAlignment="Top" Width="225" Height="39" Background="#FFFF4D4D" BorderBrush="#FFFF4D4D"/>
-        <Button x:Name="BotonAñadir" Content="Añadir" HorizontalAlignment="Left" Margin="504,489,0,0" VerticalAlignment="Top" Width="225" Height="39"/>
-        <Button x:Name="BotonBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="504,207,0,0" VerticalAlignment="Top" Width="225" Height="38"/>
+        <Button x:Name="BotonAñadir" Content="Añadir" HorizontalAlignment="Left" Margin="504,487,0,0" VerticalAlignment="Top" Width="225" Height="39" Click="BotonAñadir_Click"/>
+        <Button x:Name="BotonBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="504,433,0,0" VerticalAlignment="Top" Width="225" Height="38"/>
+        <Label Content="Teléfono:" HorizontalAlignment="Left" Margin="504,132,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="txt_telefono" HorizontalAlignment="Left" Height="30" Margin="510,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" FontSize="16"/>
     </Grid>
 </Page>

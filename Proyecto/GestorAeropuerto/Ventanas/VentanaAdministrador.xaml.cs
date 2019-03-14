@@ -105,5 +105,10 @@ namespace GestorAeropuerto.Ventanas
             frameAerolineas = new FrameAerolineas(this);
             frameVentana.Content = frameAerolineas;
         }
+
+        private void MenuVuelos_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
