@@ -51,7 +51,8 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
 
         private void BotonAñadir_Click(object sender, RoutedEventArgs e)
         {
-
+            VentanaAñadirAerolinea nuevaVentana = new VentanaAñadirAerolinea();
+            nuevaVentana.Show();
         }
     }
 }

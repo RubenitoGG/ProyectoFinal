@@ -83,6 +83,9 @@
     <Compile Include="Ventanas\VentanaAdministrador.xaml.cs">
       <DependentUpon>VentanaAdministrador.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\VentanaAñadirAerolinea.xaml.cs">
+      <DependentUpon>VentanaAñadirAerolinea.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\VentanaLogin.xaml.cs">
       <DependentUpon>VentanaLogin.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas\VentanaAdministrador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\VentanaAñadirAerolinea.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
