@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using GestorAeropuerto.DAL;
 using GestorAeropuerto.Model;
+using GestorAeropuerto.Ventanas.FramesAdministrador;
 
 namespace GestorAeropuerto.Ventanas
 {
@@ -22,14 +23,45 @@ namespace GestorAeropuerto.Ventanas
     public partial class VentanaAñadirAerolinea : Window
     {
         UnitOfWork uow = new UnitOfWork();
+        FrameAerolineas frame;
 
-        public VentanaAñadirAerolinea()
+        public VentanaAñadirAerolinea(FrameAerolineas frame)
         {
             InitializeComponent();
+            this.frame = frame;
         }
 
-        private void BotonAñadir_Click(object sender, RoutedEventArgs e)
+        private void BotonAñadir_Click_1(object sender, RoutedEventArgs e)
         {
+            // Comprobamos campos:
+            if(string.IsNullOrEmpty(textoNombre.Text.Trim()) || string.IsNullOrEmpty(textoTelefono.Text.Trim()))
+            {
+                MessageBox.Show("Faltan campos por cubrir", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                textoNombre.Text = "";
+                textoTelefono.Text = "";
+                return;
+            }
+            
+            // Creamos nueva Aerolínea:
+            Aerolinea aero = new Aerolinea
+            {
+                Nombre = this.textoNombre.Text,
+                Telefono = this.textoTelefono.Text
+            };
+
+            // Añadir Aerolínea:
+            uow.AerolineaRepositorio.Añadir(aero);
+
+            // Actualizar en la principal:
+            frame.ActualizarAerolineas();
+
+            // Cerrar Ventana:
+            this.Close();
+        }
+
+        private void BotonCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            // Cerrar Ventana:
             this.Close();
         }
     }

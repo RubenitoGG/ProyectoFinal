@@ -39,7 +39,7 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             ventana.CambiarColor("Usuario");
 
             // Ponemos los usuarios en el ListBox:
-            MostrarUsuarios();
+            //MostrarUsuarios();
         }
         /// <summary>
         /// Coge todos los usuarios de la base de datos y pone su nombre el el ListBox.

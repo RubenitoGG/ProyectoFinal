@@ -8,9 +8,10 @@
         Title="Aerolínea" Height="250" Width="400" ResizeMode="NoResize">
     <Grid>
         <Label Content="Nombre:" HorizontalAlignment="Left" Margin="70,30,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textoUsuario" HorizontalAlignment="Left" Height="28" Margin="81,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="255"/>
+        <TextBox x:Name="textoNombre" HorizontalAlignment="Left" Height="28" Margin="81,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="255"/>
         <Label Content="Teléfono:" HorizontalAlignment="Left" Margin="70,94,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textoContraseña" HorizontalAlignment="Left" Height="25" Margin="81,120,0,0" Text="" VerticalAlignment="Top" Width="255"/>
-        <Button x:Name="BotonAñadir" Content="Añadir" HorizontalAlignment="Center" Margin="160,161,160,28" VerticalAlignment="Center" Width="74" Click="BotonAñadir_Click"/>
+        <TextBox x:Name="textoTelefono" HorizontalAlignment="Left" Height="25" Margin="81,120,0,0" Text="" VerticalAlignment="Top" Width="255"/>
+        <Button x:Name="BotonCancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="-120,140,0,0" VerticalAlignment="Center" Width="100" Background="#FFFF4D4D" BorderBrush="#FFFF4D4D" Click="BotonCancelar_Click"/>
+        <Button x:Name="BotonAñadir" Content="Añadir" HorizontalAlignment="Center" Margin="120,140,0,0" VerticalAlignment="Center" Width="100" Click="BotonAñadir_Click_1"/>
     </Grid>
 </Window>
