@@ -78,8 +78,14 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             if (listaAerolineas.SelectedItem == null)
                 return;
 
+            // Buscamos la Aerolínea:
+            foreach (Aerolinea aerolinea in aerolineas)
+            {
+                if (aerolinea.Nombre == listaAerolineas.SelectedItem.ToString())
+                    this.aero = aerolinea;
+            }
+
             // Ponemos el teléfono en el TextBox:
-            aero = (Aerolinea)listaAerolineas.SelectedItem;
             this.textoTelefono.Text = aero.Telefono;
         }
 
@@ -91,7 +97,7 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
         private void BotonEliminar_Click(object sender, RoutedEventArgs e)
         {
             // Comprobamos si tenemos seleccionada una Aerolínea:
-            if(aero == null)
+            if(aero != null)
             {
                 // Borramos la Aerolínea:
                 uow.AerolineaRepositorio.Delete(aero);
@@ -103,6 +109,9 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
 
                 // Mensaje de Aerolínea borra:
                 MessageBox.Show("Aerolínea eliminada correctamente.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Actualizamos la lista de Aerolíneas:
+                ActualizarAerolineas();
             }
             else // Si no sacamos un mensaje:
             {

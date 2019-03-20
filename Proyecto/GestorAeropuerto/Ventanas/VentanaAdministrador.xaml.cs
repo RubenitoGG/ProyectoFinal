@@ -22,6 +22,9 @@ namespace GestorAeropuerto.Ventanas
     {
         FrameUsuarios frameUsuarios;
         FrameAerolineas frameAerolineas;
+        //FrameVuelos frameVuelos;
+        FrameEmpleados frameEmpleados;
+
         Color normal = new Color();
         Color seleccionado = new Color();
 
@@ -106,9 +109,26 @@ namespace GestorAeropuerto.Ventanas
             frameVentana.Content = frameAerolineas;
         }
 
+        /// <summary>
+        /// Nos movemos al Frame de Vuelos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MenuVuelos_Click(object sender, RoutedEventArgs e)
         {
+            //frameVuelos = new FrameVuelos(this);
+            //frameVentana.Content = frameVuelos;
+        }
 
+        /// <summary>
+        /// Nos movemos al Frame de Empleados.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuEmpleados_Click(object sender, RoutedEventArgs e)
+        {
+            frameEmpleados = new FrameEmpleados(this);
+            frameVentana.Content = frameEmpleados;
         }
     }
 }

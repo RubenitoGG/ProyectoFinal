@@ -10,7 +10,7 @@
             <MenuItem x:Name="menuUsuarios" FontSize="14" Header="Usuarios" Height="35" Width="141" Background="#0060A8DA" Click="MenuUsuarios_Click"/>
             <MenuItem x:Name="menuAerolineas" FontSize="14" Header="Aerolineas" Height="35" Width="162" Background="#0060A8DA" Click="MenuAerolineas_Click"/>
             <MenuItem x:Name="menuVuelos" FontSize="14" Header="Vuelos" Height="35" Width="119" Background="#0060A8DA" Click="MenuVuelos_Click"/>
-            <MenuItem x:Name="menuEmpleados" FontSize="14" Header="Empleados" Height="35" Width="175" Background="#0060A8DA"/>
+            <MenuItem x:Name="menuEmpleados" FontSize="14" Header="Empleados" Height="35" Width="175" Background="#0060A8DA" Click="MenuEmpleados_Click"/>
         </Menu>
         <Frame x:Name="frameVentana" Content="" HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="996" Margin="10,40,0,0" NavigationUIVisibility="Hidden"/>
 
