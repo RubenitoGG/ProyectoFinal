@@ -86,6 +86,9 @@
     <Compile Include="Ventanas\FramesAdministrador\FrameUsuarios.xaml.cs">
       <DependentUpon>FrameUsuarios.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\FramesAdministrador\FrameVuelos.xaml.cs">
+      <DependentUpon>FrameVuelos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\VentanaAdministrador.xaml.cs">
       <DependentUpon>VentanaAdministrador.xaml</DependentUpon>
     </Compile>
@@ -108,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas\FramesAdministrador\FrameUsuarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\FramesAdministrador\FrameVuelos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
