@@ -50,14 +50,20 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
         /// <param name="aerolinena"></param>
         private void ActualizarLista(string aerolinena)
         {
+            // Borramos los campos:
+            BorrarCampos();
+
             // Borramos todos los items de la ListBox:
             this.listaEmpleados.Items.Clear();
 
             // Mostramos los empleados de esa Aerolínea:
             foreach (Empleado empleado in uow.EmpleadoRepositorio.Get())
             {
-                this.listaEmpleados.Items.Add(empleado.Nombre);
+                if(empleado.Aerolinea.Nombre == aerolinena)
+                    this.listaEmpleados.Items.Add(empleado.Nombre);
             }
+
+            // Pasamos al modo actualizar:
         }
 
         /// <summary>
@@ -131,7 +137,11 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
                 return;
 
             // Guardamos el Empleado seleccionado:
-            empleado = (Empleado)this.listaEmpleados.SelectedItem;
+            foreach (Empleado empl in uow.EmpleadoRepositorio.Get())
+            {
+                if (empl.Nombre == this.listaEmpleados.SelectedItem.ToString())
+                    this.empleado = empl;
+            }
 
             // Ponemos en los TextBox y ComboBox los datos del usuario
             textoId.Text = empleado.EmpleadoId.ToString();
@@ -203,9 +213,36 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             }
         }
 
+        /// <summary>
+        /// Al cambiar de Aerolínea se muestran otros los Empleados de la seleccionada.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboAerolinea_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ActualizarLista(this.comboAerolinea.Text);
+        }
+
+        /// <summary>
+        /// Elima el empleado seleccionado.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BotonEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            // Vemos si hay un empleado seleccionado:
+            if(empleado != null)
+            {
+                // Borramos el empleado:
+                uow.EmpleadoRepositorio.Delete(this.empleado);
+            }
+
+            // Borramos los campos:
+            BorrarCampos();
+
+            // Pasamos al modo añadir:
+            nuevo = true;
+            BotonAñadir.Content = "Añadir";
         }
     }
 }
