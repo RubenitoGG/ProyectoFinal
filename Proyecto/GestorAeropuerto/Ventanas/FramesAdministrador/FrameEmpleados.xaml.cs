@@ -205,11 +205,41 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
 
                 // Borramos todos los campos:
                 BorrarCampos();
+
+                // Actualizamos la lista:
+                ActualizarLista(this.comboAerolinea.SelectedItem.ToString());
             }
             // Modo actualizar:
             else
             {
+                // Modificamos los valores del empleado:
+                this.empleado.Nombre = textoNombre.Text;
+                this.empleado.Apellidos = textoApellidos.Text;
+                this.empleado.Pais = textoPais.Text;
+                this.empleado.Genero = comboGenero.Text;
 
+                // Guardamos el Cargo seleccionado:
+                foreach (Cargo cargo in uow.CargoRepositorio.Get())
+                {
+                    if (cargo.Nombre == comboCargo.SelectedItem.ToString())
+                        this.empleado.Cargo = cargo;
+                }
+
+                // Guardamos la Aerolínea seleccionada:
+                foreach (Aerolinea aerolinea in uow.AerolineaRepositorio.Get())
+                {
+                    if (aerolinea.Nombre == comboAerolinea.SelectedItem.ToString())
+                        this.empleado.Aerolinea = aerolinea;
+                }
+
+                // Actualizamos la base de datos:
+                uow.EmpleadoRepositorio.Update(this.empleado);
+
+                //  Borramos todos los campos:
+                BorrarCampos();
+
+                // Actualizamos la lista:
+                ActualizarLista(this.comboAerolinea.SelectedItem.ToString());
             }
         }
 
@@ -220,7 +250,7 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
         /// <param name="e"></param>
         private void ComboAerolinea_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ActualizarLista(this.comboAerolinea.Text);
+            ActualizarLista(this.comboAerolinea.SelectedItem.ToString());
         }
 
         /// <summary>
@@ -243,6 +273,9 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             // Pasamos al modo añadir:
             nuevo = true;
             BotonAñadir.Content = "Añadir";
+
+            // Actualizamos la lista:
+            ActualizarLista(this.comboAerolinea.SelectedItem.ToString());
         }
     }
 }
