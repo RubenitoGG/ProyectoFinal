@@ -19,8 +19,8 @@
         <TextBox x:Name="textoApellidos" HorizontalAlignment="Left" Height="39" Margin="546,254,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16"/>
         <Button x:Name="BotonBorrar" Content="BorrarCampos" HorizontalAlignment="Left" Margin="447,322,0,0" VerticalAlignment="Top" Width="225" Height="38" Click="BotonBorrar_Click"/>
         <Button x:Name="BotonEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="714,524,0,0" VerticalAlignment="Top" Width="225" Height="38" Background="#FFFF4D4D" BorderBrush="#FFFF4D4D"/>
-        <Button x:Name="BotonAñadir" Content="Añadir" HorizontalAlignment="Left" Margin="447,524,0,0" VerticalAlignment="Top" Width="225" Height="39"/>
-        <ComboBox x:Name="comboAerolinea" HorizontalAlignment="Left" Margin="61,94,0,0" VerticalAlignment="Top" Width="351" Height="43"/>
+        <Button x:Name="BotonAñadir" Content="Añadir" HorizontalAlignment="Left" Margin="447,524,0,0" VerticalAlignment="Top" Width="225" Height="39" Click="BotonAñadir_Click"/>
+        <ComboBox x:Name="comboAerolinea" HorizontalAlignment="Left" Margin="61,94,0,0" VerticalAlignment="Top" Width="351" Height="43" SelectionChanged="ComboAerolinea_SelectionChanged"/>
         <Label Content="País:" HorizontalAlignment="Left" Margin="725,175,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="-0.3,0.468"/>
         <Label Content="Género:" HorizontalAlignment="Left" Margin="701,219,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Cargo:" HorizontalAlignment="Left" Margin="710,265,0,0" VerticalAlignment="Top" FontSize="16"/>

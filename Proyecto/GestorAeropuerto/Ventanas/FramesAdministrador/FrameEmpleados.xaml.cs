@@ -35,11 +35,29 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             InitializeComponent();
             this.ventana = ventana;
 
+            nuevo = true;
+
             // Cambiamos el color del menú de la ventana:
             ventana.CambiarColor("Empleado");
 
             // Rellenamos los combos:
             ActualizarCombos();
+        }
+
+        /// <summary>
+        /// Actualiza la ListBox.
+        /// </summary>
+        /// <param name="aerolinena"></param>
+        private void ActualizarLista(string aerolinena)
+        {
+            // Borramos todos los items de la ListBox:
+            this.listaEmpleados.Items.Clear();
+
+            // Mostramos los empleados de esa Aerolínea:
+            foreach (Empleado empleado in uow.EmpleadoRepositorio.Get())
+            {
+                this.listaEmpleados.Items.Add(empleado.Nombre);
+            }
         }
 
         /// <summary>
@@ -60,9 +78,8 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             }
 
             // Guardamos los géneros en el ComboBox:
-            this.comboGenero.Items.Add("Hombre");
-            this.comboGenero.Items.Add("Mujer");
-            this.comboGenero.Items.Add("Indefinido");
+            this.comboGenero.Items.Add("Masculino");
+            this.comboGenero.Items.Add("Femenino");
 
             // Ponemos los nombres de los Cargos en el ComboBox:
             foreach (Cargo cargo in cargos)
@@ -78,9 +95,28 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
         /// <param name="e"></param>
         private void BotonBorrar_Click(object sender, RoutedEventArgs e)
         {
+            // Borramos todo:
+            BorrarCampos();
+
             // Pasamos al modo crear:
             nuevo = true;
             BotonAñadir.Content = "Añadir";
+        }
+
+        /// <summary>
+        /// Borrar los TextBox, ComboBox y la selección del empleado:
+        /// </summary>
+        private void BorrarCampos()
+        {
+            textoId.Text = "";
+            textoNombre.Text = "";
+            textoApellidos.Text = "";
+            textoPais.Text = "";
+            comboGenero.Text = "";
+            comboCargo.Text = "";
+
+            empleado = null;
+            this.listaEmpleados.SelectedItem = null;
         }
 
         /// <summary>
@@ -119,6 +155,57 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
         {
             FrameCargos f = new FrameCargos(ventana);
             ventana.frameVentana.Content = f;
+        }
+        
+        /// <summary>
+        /// Crea o Actualiza el Empleado y lo guarda en la Base de Datos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BotonAñadir_Click(object sender, RoutedEventArgs e)
+        {
+            // Modo añadir:
+            if (nuevo)
+            {
+                // Creamos el Empleado con los valores:
+                this.empleado = new Empleado()
+                {
+                    Nombre = textoNombre.Text,
+                    Apellidos = textoApellidos.Text,
+                    Pais = textoPais.Text,
+                    Genero = comboGenero.Text
+                };
+
+                // Añadimos el Cargo seleccionado:
+                foreach (Cargo cargo in uow.CargoRepositorio.Get())
+                {
+                    if (cargo.Nombre == comboCargo.SelectedItem.ToString())
+                        this.empleado.Cargo = cargo;
+                }
+                
+                // Añadimos la Aerolínea seleccionada:
+                foreach (Aerolinea aerolinea in uow.AerolineaRepositorio.Get())
+                {
+                    if (aerolinea.Nombre == comboAerolinea.SelectedItem.ToString())
+                        this.empleado.Aerolinea = aerolinea;
+                }
+
+                // Lo guardamos en la Base de Datos:
+                uow.EmpleadoRepositorio.Añadir(this.empleado);
+
+                // Borramos todos los campos:
+                BorrarCampos();
+            }
+            // Modo actualizar:
+            else
+            {
+
+            }
+        }
+
+        private void ComboAerolinea_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ActualizarLista(this.comboAerolinea.Text);
         }
     }
 }
