@@ -77,6 +77,9 @@
     <Compile Include="Ventanas\FramesAdministrador\FrameAerolineas.xaml.cs">
       <DependentUpon>FrameAerolineas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\FramesAdministrador\FrameCargos.xaml.cs">
+      <DependentUpon>FrameCargos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\FramesAdministrador\FrameEmpleados.xaml.cs">
       <DependentUpon>FrameEmpleados.xaml</DependentUpon>
     </Compile>
@@ -93,6 +96,10 @@
       <DependentUpon>VentanaLogin.xaml</DependentUpon>
     </Compile>
     <Page Include="Ventanas\FramesAdministrador\FrameAerolineas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\FramesAdministrador\FrameCargos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

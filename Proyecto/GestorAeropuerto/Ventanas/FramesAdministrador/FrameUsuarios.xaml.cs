@@ -27,7 +27,7 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
 
         UnitOfWork uow = new UnitOfWork();
 
-        bool nuevo; // Variable para saber si se va a modificar o  a crear un nuevor el usuario.
+        bool nuevo; // Variable para saber si se va a modificar o a crear un nuevor el usuario.
 
         public FrameUsuarios(VentanaAdministrador ventana)
         {
@@ -71,6 +71,11 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             listaUsuarios.SelectedItem = null;
         }
 
+        /// <summary>
+        /// Pone los datos del Usuario seleccionado en los TextBox y pasa al modo Actualizar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListaUsuarios_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (listaUsuarios.SelectedItem == null)
