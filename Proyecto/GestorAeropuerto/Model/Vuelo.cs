@@ -20,10 +20,12 @@ namespace GestorAeropuerto.Model
         public string Destino { get; set; }
 
         [Required(ErrorMessage = "Llegada obligatoria")]
-        public DateTime Llegada { get; set; }
+        public string Llegada { get; set; }
 
         [Required(ErrorMessage = "Salida obligatoria")]
-        public DateTime Salida { get; set; }
+        public string Salida { get; set; }
+
+        public virtual Aerolinea Aerolinea { get; set; }
 
         public ICollection<Billete> Billetes { get; set; }
 

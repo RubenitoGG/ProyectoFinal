@@ -74,6 +74,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\201903210750339_hora.cs" />
+    <Compile Include="Migrations\201903210750339_hora.Designer.cs">
+      <DependentUpon>201903210750339_hora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903210821172_aerolinea.cs" />
+    <Compile Include="Migrations\201903210821172_aerolinea.Designer.cs">
+      <DependentUpon>201903210821172_aerolinea.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\FramesAdministrador\FrameAerolineas.xaml.cs">
       <DependentUpon>FrameAerolineas.xaml</DependentUpon>
     </Compile>
@@ -193,6 +201,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903111149582_nombres.resx">
       <DependentUpon>201903111149582_nombres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903210750339_hora.resx">
+      <DependentUpon>201903210750339_hora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903210821172_aerolinea.resx">
+      <DependentUpon>201903210821172_aerolinea.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

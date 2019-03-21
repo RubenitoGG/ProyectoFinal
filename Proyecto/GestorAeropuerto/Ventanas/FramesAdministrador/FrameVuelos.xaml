@@ -10,23 +10,23 @@
 
     <Grid Background="White">
         <Label Content="VUELOS" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontFamily="Segoe Print" FontSize="36" FontWeight="Bold"/>
-        <ListBox x:Name="listaVuelos" HorizontalAlignment="Left" Height="381" Margin="80,147,0,0" VerticalAlignment="Top" Width="278" BorderBrush="#FF2196F3" BorderThickness="1"/>
+        <ListBox x:Name="listaVuelos" HorizontalAlignment="Left" Height="381" Margin="80,147,0,0" VerticalAlignment="Top" Width="278" BorderBrush="#FF2196F3" BorderThickness="1" SelectionChanged="ListaVuelos_SelectionChanged"/>
         <Label Content="Id:" HorizontalAlignment="Left" Margin="437,155,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Origen:" HorizontalAlignment="Left" Margin="402,199,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Destino:" HorizontalAlignment="Left" Margin="396,243,0,0" VerticalAlignment="Top" FontSize="16"/>
         <TextBox x:Name="textoId" HorizontalAlignment="Left" Height="38" Margin="477,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16" IsReadOnly="True"/>
         <TextBox x:Name="textoOrigen" HorizontalAlignment="Left" Height="38" Margin="477,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16"/>
         <TextBox x:Name="textoDestino" HorizontalAlignment="Left" Height="38" Margin="477,236,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16"/>
-        <Button x:Name="BotonNuevo" Content="Nuevo" HorizontalAlignment="Left" Margin="372,439,0,0" VerticalAlignment="Top" Width="225" Height="39"/>
-        <Button x:Name="BotonEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="372,538,0,0" VerticalAlignment="Top" Width="225" Height="39" Background="#FFFF4D4D" BorderBrush="#FFFF4D4D"/>
-        <Button x:Name="BotonAñadir" Content="Añadir" HorizontalAlignment="Left" Margin="372,489,0,0" VerticalAlignment="Top" Width="225" Height="39"/>
-        <ComboBox HorizontalAlignment="Left" Margin="80,80,0,0" VerticalAlignment="Top" Width="278" Height="46"/>
+        <Button x:Name="BotonNuevo" Content="Nuevo" HorizontalAlignment="Left" Margin="372,439,0,0" VerticalAlignment="Top" Width="225" Height="39" Click="BotonNuevo_Click"/>
+        <Button x:Name="BotonEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="372,538,0,0" VerticalAlignment="Top" Width="225" Height="39" Background="#FFFF4D4D" BorderBrush="#FFFF4D4D" Click="BotonEliminar_Click"/>
+        <Button x:Name="BotonAñadir" Content="Añadir" HorizontalAlignment="Left" Margin="372,489,0,0" VerticalAlignment="Top" Width="225" Height="39" Click="BotonAñadir_Click"/>
+        <ComboBox x:Name="comboAerolineas" HorizontalAlignment="Left" Margin="80,80,0,0" VerticalAlignment="Top" Width="278" Height="46" SelectionChanged="ComboAerolineas_SelectionChanged"/>
         <Label Content="Hora salida:" HorizontalAlignment="Left" Margin="372,287,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Hora llegada:" HorizontalAlignment="Left" Margin="363,331,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="textoHoraSalida" HorizontalAlignment="Left" Height="38" Margin="477,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16"/>
-        <TextBox x:Name="textoHoraLlegada" HorizontalAlignment="Left" Height="38" Margin="477,324,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16"/>
         <Button x:Name="BotonBilletes" Content="Billetes" HorizontalAlignment="Left" Margin="620,538,0,0" VerticalAlignment="Top" Width="278" Height="39"/>
-        <ListBox x:Name="listaVuelos_Copy" HorizontalAlignment="Left" Height="381" Margin="620,147,0,0" VerticalAlignment="Top" Width="278" BorderBrush="#FF2196F3" BorderThickness="1"/>
+        <ListBox x:Name="listaPasajeros" HorizontalAlignment="Left" Height="381" Margin="620,147,0,0" VerticalAlignment="Top" Width="278" BorderBrush="#FF2196F3" BorderThickness="1"/>
         <Button x:Name="BotonAviones" Content="Aviones" HorizontalAlignment="Left" Margin="80,538,0,0" VerticalAlignment="Top" Width="278" Height="39"/>
+        <ComboBox x:Name="comboBoxSalida" HorizontalAlignment="Left" Margin="477,287,0,0" VerticalAlignment="Top" Width="120" Height="31"/>
+        <ComboBox x:Name="comboBoxLlegada" HorizontalAlignment="Left" Margin="477,331,0,0" VerticalAlignment="Top" Width="120" Height="31"/>
     </Grid>
 </Page>
