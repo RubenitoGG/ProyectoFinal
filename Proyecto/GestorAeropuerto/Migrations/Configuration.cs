@@ -10,18 +10,19 @@ namespace GestorAeropuerto.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(GestorAeropuerto.DAL.GestorAeropuertoContext context)
         {
             //  This method will be called after migrating to the latest version.
-            Usuario u = new Usuario
-            {
-                Nombre = "admin",
-                Password = "abc123."
-            };
-            context.Usuario.AddOrUpdate(u);
+            //Usuario u = new Usuario
+            //{
+            //    Nombre = "admin",
+            //    Password = "abc123."
+            //};
+            //context.Usuario.AddOrUpdate(u);
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
         }
