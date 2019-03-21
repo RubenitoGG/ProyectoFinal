@@ -24,6 +24,7 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
     {
         VentanaAdministrador ventana;
         UnitOfWork uow = new UnitOfWork();
+        PropertyValidateModel validador = new PropertyValidateModel();
 
         Vuelo vuelo;
         bool nuevo;
@@ -110,7 +111,14 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
         /// <param name="e"></param>
         private void BotonAñadir_Click(object sender, RoutedEventArgs e)
         {
-            if (nuevo)
+            // Comprobamos los ComboBox:
+            if (comboBoxSalida.SelectedItem == null || comboBoxLlegada.SelectedItem == null || comboAerolineas.SelectedItem == null)
+            {
+                MessageBox.Show("Tienes que completar los ComboBox", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (nuevo) // Modo crear:
             {
                 // Creamos el vuelo con sus variables:
                 vuelo = new Vuelo()
@@ -128,19 +136,37 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
                         vuelo.Aerolinea = aero;
                 }
 
-                // Agregamos el jugador a la Base de Datos:
-                uow.VueloRepositorio.Añadir(vuelo);
+                // Comprobamos con el validador:
+                if (validador.errores(vuelo) == "")
+                {
+                    // Agregamos el jugador a la Base de Datos:
+                    uow.VueloRepositorio.Añadir(vuelo);
+                    MessageBox.Show("Vuelo añadido correctamente", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                    MessageBox.Show("Datos incorrectos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            else
+            else // Modo actualizar:
             {
+                // Cambiamos los valores:
                 this.vuelo.Origen = textoOrigen.Text;
                 this.vuelo.Destino = textoDestino.Text;
                 this.vuelo.Salida = comboBoxSalida.SelectedItem.ToString();
                 this.vuelo.Llegada = comboBoxLlegada.SelectedItem.ToString();
 
-                uow.VueloRepositorio.Update(this.vuelo);
+                // Comprobamos con el validador:
+                if (validador.errores(vuelo) == "")
+                {
+                    uow.VueloRepositorio.Update(this.vuelo);
+                    MessageBox.Show("Vuelo añadido correctamente", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Datos incorrectos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ventana.frameVentana.Content = new FrameVuelos(ventana);
+                }
             }
-
+            
             ActualizarListas();
         }
 
@@ -167,7 +193,7 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
 
         private void BotonEliminar_Click(object sender, RoutedEventArgs e)
         {
-            if(this.listaVuelos.SelectedItem != null)
+            if (this.listaVuelos.SelectedItem != null)
                 uow.VueloRepositorio.Delete(this.vuelo);
 
             ActualizarListas();

@@ -23,6 +23,8 @@ namespace GestorAeropuerto.Ventanas
     public partial class VentanaAñadirAerolinea : Window
     {
         UnitOfWork uow = new UnitOfWork();
+        PropertyValidateModel validador = new PropertyValidateModel();
+
         FrameAerolineas frame;
 
         public VentanaAñadirAerolinea(FrameAerolineas frame)
@@ -41,7 +43,16 @@ namespace GestorAeropuerto.Ventanas
                 textoTelefono.Text = "";
                 return;
             }
-            
+
+            // Comprobamos teléfono:
+            int telefono;
+
+            if (!int.TryParse(this.textoTelefono.Text, out telefono) || this.textoTelefono.Text.Length != 9)
+            {
+                MessageBox.Show("Teléfono incorrecto", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             // Creamos nueva Aerolínea:
             Aerolinea aero = new Aerolinea
             {
@@ -49,14 +60,20 @@ namespace GestorAeropuerto.Ventanas
                 Telefono = this.textoTelefono.Text
             };
 
-            // Añadir Aerolínea:
-            uow.AerolineaRepositorio.Añadir(aero);
+            // Comprobamos con el validador:
+            if (validador.errores(aero) == "")
+            {
+                // Añadir Aerolínea:
+                uow.AerolineaRepositorio.Añadir(aero);
 
-            // Actualizar en la principal:
-            frame.ActualizarAerolineas();
+                // Actualizar en la principal:
+                frame.ActualizarAerolineas();
 
-            // Cerrar Ventana:
-            this.Close();
+                // Cerrar Ventana:
+                this.Close();
+            }
+            else
+                MessageBox.Show("Datos incorrectos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void BotonCancelar_Click(object sender, RoutedEventArgs e)

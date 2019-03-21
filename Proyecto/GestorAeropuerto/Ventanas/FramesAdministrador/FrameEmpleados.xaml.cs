@@ -28,6 +28,8 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
         UnitOfWork uow = new UnitOfWork();
         Empleado empleado;
 
+        PropertyValidateModel validador = new PropertyValidateModel();
+
         bool nuevo; // Variable para cambiar entre Añadir y Actualizar.
 
         public FrameEmpleados(VentanaAdministrador ventana)
@@ -59,7 +61,7 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             // Mostramos los empleados de esa Aerolínea:
             foreach (Empleado empleado in uow.EmpleadoRepositorio.Get())
             {
-                if(empleado.Aerolinea.Nombre == aerolinena)
+                if (empleado.Aerolinea.Nombre == aerolinena)
                     this.listaEmpleados.Items.Add(empleado.Nombre);
             }
 
@@ -166,7 +168,7 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             FrameCargos f = new FrameCargos(ventana);
             ventana.frameVentana.Content = f;
         }
-        
+
         /// <summary>
         /// Crea o Actualiza el Empleado y lo guarda en la Base de Datos.
         /// </summary>
@@ -189,25 +191,41 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
                 // Añadimos el Cargo seleccionado:
                 foreach (Cargo cargo in uow.CargoRepositorio.Get())
                 {
-                    if (cargo.Nombre == comboCargo.SelectedItem.ToString())
-                        this.empleado.Cargo = cargo;
+                    if (comboCargo.SelectedItem != null)
+                    {
+                        if (cargo.Nombre == comboCargo.SelectedItem.ToString())
+                            this.empleado.Cargo = cargo;
+                    }
                 }
-                
+
                 // Añadimos la Aerolínea seleccionada:
                 foreach (Aerolinea aerolinea in uow.AerolineaRepositorio.Get())
                 {
-                    if (aerolinea.Nombre == comboAerolinea.SelectedItem.ToString())
-                        this.empleado.Aerolinea = aerolinea;
+                    if (comboAerolinea.SelectedItem != null)
+                    {
+                        if (aerolinea.Nombre == comboAerolinea.SelectedItem.ToString())
+                            this.empleado.Aerolinea = aerolinea;
+                    }
                 }
 
-                // Lo guardamos en la Base de Datos:
-                uow.EmpleadoRepositorio.Añadir(this.empleado);
+                // Comprobamos con el validador:
+                if (validador.errores(this.empleado) == "")
+                {
+                    // Lo guardamos en la Base de Datos:
+                    uow.EmpleadoRepositorio.Añadir(this.empleado);
+
+                    // Mensaje de empleado añadido:
+                    MessageBox.Show("Empleado añadido correctamente", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                    MessageBox.Show("Campos incorrectos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 // Borramos todos los campos:
                 BorrarCampos();
 
                 // Actualizamos la lista:
-                ActualizarLista(this.comboAerolinea.SelectedItem.ToString());
+                if (this.comboAerolinea.SelectedItem != null)
+                    ActualizarLista(this.comboAerolinea.SelectedItem.ToString());
             }
             // Modo actualizar:
             else
@@ -221,25 +239,41 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
                 // Guardamos el Cargo seleccionado:
                 foreach (Cargo cargo in uow.CargoRepositorio.Get())
                 {
-                    if (cargo.Nombre == comboCargo.SelectedItem.ToString())
-                        this.empleado.Cargo = cargo;
+                    if (comboCargo.SelectedItem != null)
+                    {
+                        if (cargo.Nombre == comboCargo.SelectedItem.ToString())
+                            this.empleado.Cargo = cargo;
+                    }
                 }
 
                 // Guardamos la Aerolínea seleccionada:
                 foreach (Aerolinea aerolinea in uow.AerolineaRepositorio.Get())
                 {
-                    if (aerolinea.Nombre == comboAerolinea.SelectedItem.ToString())
-                        this.empleado.Aerolinea = aerolinea;
+                    if (comboAerolinea.SelectedItem != null)
+                    {
+                        if (aerolinea.Nombre == comboAerolinea.SelectedItem.ToString())
+                            this.empleado.Aerolinea = aerolinea;
+                    }
                 }
 
-                // Actualizamos la base de datos:
-                uow.EmpleadoRepositorio.Update(this.empleado);
+                // Comprobamos con el validador:
+                if (validador.errores(this.empleado) == "")
+                {
+                    // Actualizamos la base de datos:
+                    uow.EmpleadoRepositorio.Update(this.empleado);
 
-                //  Borramos todos los campos:
-                BorrarCampos();
-
+                    //  Borramos todos los campos:
+                    BorrarCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Campos incorrectos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ventana.frameVentana.Content = new FrameEmpleados(ventana);
+                }
+                
                 // Actualizamos la lista:
-                ActualizarLista(this.comboAerolinea.SelectedItem.ToString());
+                if (this.comboAerolinea.SelectedItem != null) 
+                    ActualizarLista(this.comboAerolinea.SelectedItem.ToString());
             }
         }
 
@@ -261,7 +295,7 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
         private void BotonEliminar_Click(object sender, RoutedEventArgs e)
         {
             // Vemos si hay un empleado seleccionado:
-            if(empleado != null)
+            if (empleado != null)
             {
                 // Borramos el empleado:
                 uow.EmpleadoRepositorio.Delete(this.empleado);

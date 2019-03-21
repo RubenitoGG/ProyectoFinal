@@ -45,7 +45,6 @@ namespace GestorAeropuerto.DAL
             context.Entry(entityToDelete).State = EntityState.Deleted;
             context.SaveChanges();
         }
-
         public void Delete(Expression<Func<TEntity, bool>> predicate)
         {
             dbSet = context.Set<TEntity>();

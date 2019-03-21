@@ -25,6 +25,8 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
         VentanaAdministrador ventana; // Referencia a la ventana donde se encuentra el frame.
         List<Usuario> usuarios; // Lista de todos los usuarios.
 
+        PropertyValidateModel validador = new PropertyValidateModel(); // Validador de la Base de Datos.
+
         UnitOfWork uow = new UnitOfWork();
 
         bool nuevo; // Variable para saber si se va a modificar o a crear un nuevor el usuario.
@@ -127,11 +129,17 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
                     Password = txt_contraseña.Text
                 };
 
-                // Añadirmo el usuario a la base de datos:
-                uow.UsuarioRepositorio.Añadir(usuario);
+                // Comprobamos con el validador:
+                if (validador.errores(usuario) == "")
+                {
+                    // Añadirmo el usuario a la base de datos:
+                    uow.UsuarioRepositorio.Añadir(usuario);
 
-                // Mensaje de usuario añadido:
-                MessageBox.Show("Usuario añadidio correctamente", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                    // Mensaje de usuario añadido:
+                    MessageBox.Show("Usuario añadidio correctamente", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                    MessageBox.Show("Campos incorrectos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             #endregion
 
@@ -147,11 +155,20 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
                         usuario.Nombre = txt_usuario.Text;
                         usuario.Password = txt_contraseña.Text;
 
-                        // Actualizamos los usuarios:
-                        uow.UsuarioRepositorio.Update(usuario);
+                        // Comprobamos con el validador:
+                        if (validador.errores(usuario) == "")
+                        {
+                            // Actualizamos los usuarios:
+                            uow.UsuarioRepositorio.Update(usuario);
 
-                        // Mensaje de usuario modificado:
-                        MessageBox.Show("Usuario modificado correctamente", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                            // Mensaje de usuario modificado:
+                            MessageBox.Show("Usuario modificado correctamente", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Campos incorrectos", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                            ventana.frameVentana.Content = new FrameUsuarios(ventana);
+                        }
                     }
                 }
             }

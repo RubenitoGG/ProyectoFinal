@@ -28,6 +28,7 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
         bool nuevo; // Variable para saber si vamos a Añadir o Modificar.
 
         UnitOfWork uow = new UnitOfWork();
+        PropertyValidateModel validador = new PropertyValidateModel();
 
         public FrameCargos(VentanaAdministrador ventana)
         {
@@ -144,7 +145,14 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             // Modo Añadir:
             if (nuevo)
             {
+                double money;
+
                 // Comprobamos si los campos son correctos:
+                if (!double.TryParse(textoSueldo.Text, out money))
+                {
+                    MessageBox.Show("Valor de dinero incorrecto", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
 
                 // Creamos el nuevo Cargo:
                 this.cargo = new Cargo()
@@ -153,11 +161,17 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
                     Sueldo = Convert.ToDouble(textoSueldo.Text)
                 };
 
-                // Lo añadimos a la Base de Datos:
-                uow.CargoRepositorio.Añadir(this.cargo);
+                // Comprobamos con el validador:
+                if (validador.errores(cargo) == "")
+                {
+                    // Lo añadimos a la Base de Datos:
+                    uow.CargoRepositorio.Añadir(this.cargo);
 
-                // Mensaje de Cargo añadido:
-                MessageBox.Show("Cargo añadido correctamente.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                    // Mensaje de Cargo añadido:
+                    MessageBox.Show("Cargo añadido correctamente.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                    MessageBox.Show("Datos incorrectos.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 // Borramos los campos:
                 BorrarCampos();
@@ -168,16 +182,33 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             // Modo Actualizar:
             else
             {
+                double money;
+
+                // Comprobamos si los campos son correctos:
+                if (!double.TryParse(textoSueldo.Text, out money))
+                {
+                    MessageBox.Show("Valor de dinero incorrecto", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
                 // Cambiamos los valores del Cargo seleccionado:
                 this.cargo.Nombre = textoNombre.Text;
                 this.cargo.Sueldo = Convert.ToDouble(textoSueldo.Text);
 
-                // Actualizamos la Base de Datos:
-                uow.CargoRepositorio.Update(this.cargo);
+                // Comprobamos con el validador:
+                if (validador.errores(this.cargo) == "")
+                {
+                    // Actualizamos la Base de Datos:
+                    uow.CargoRepositorio.Update(this.cargo);
 
-                // Mensaje de Cargo actualizado:
-                MessageBox.Show("Cargo actualizado correctamente.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                    // Mensaje de Cargo actualizado:
+                    MessageBox.Show("Cargo actualizado correctamente.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Datos incorrectos.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ventana.frameVentana.Content = new FrameCargos(ventana);
+                }
                 // Actualizamos la ListBox:
                 ActualizarLista();
             }
@@ -192,8 +223,15 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
         private void BotonEliminar_Click(object sender, RoutedEventArgs e)
         {
             // Si tenemos un cargo seleccionado:
-            if(this.cargo != null)
+            if (this.cargo != null)
             {
+                // Borramos los usuarios que tengan ese cargo:
+                foreach (Empleado empleado in uow.EmpleadoRepositorio.Get())
+                {
+                    if (empleado.Cargo == this.cargo)
+                        uow.EmpleadoRepositorio.Delete(empleado);
+                }
+
                 // Borramos el cargo:
                 uow.CargoRepositorio.Delete(cargo);
 
