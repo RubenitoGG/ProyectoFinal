@@ -225,21 +225,25 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             // Si tenemos un cargo seleccionado:
             if (this.cargo != null)
             {
-                // Borramos los usuarios que tengan ese cargo:
-                foreach (Empleado empleado in uow.EmpleadoRepositorio.Get())
+                if (MessageBox.Show("¿Estás seguro?\nSi borras este Cargo se borrarán todos los Empleados asignados al mismo.",
+                    "Info", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
                 {
-                    if (empleado.Cargo == this.cargo)
-                        uow.EmpleadoRepositorio.Delete(empleado);
+                    // Borramos los usuarios que tengan ese cargo:
+                    foreach (Empleado empleado in uow.EmpleadoRepositorio.Get())
+                    {
+                        if (empleado.Cargo == this.cargo)
+                            uow.EmpleadoRepositorio.Delete(empleado);
+                    }
+
+                    // Borramos el cargo:
+                    uow.CargoRepositorio.Delete(cargo);
+
+                    // Mensaje de Cargo eliminado:
+                    MessageBox.Show("Cargo eliminado correctamente.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    // Actualizamos la ListBox:
+                    ActualizarLista();
                 }
-
-                // Borramos el cargo:
-                uow.CargoRepositorio.Delete(cargo);
-
-                // Mensaje de Cargo eliminado:
-                MessageBox.Show("Cargo eliminado correctamente.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                // Actualizamos la ListBox:
-                ActualizarLista();
             }
         }
     }
