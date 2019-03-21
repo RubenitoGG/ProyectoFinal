@@ -66,6 +66,9 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
 
         private void ActualizarListas()
         {
+            if (comboAerolineas.SelectedItem == null)
+                return;
+
             this.listaVuelos.Items.Clear();
 
             foreach (Vuelo vuelo in uow.VueloRepositorio.Get())
@@ -194,10 +197,26 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
         private void BotonEliminar_Click(object sender, RoutedEventArgs e)
         {
             if (this.listaVuelos.SelectedItem != null)
+            {
                 uow.VueloRepositorio.Delete(this.vuelo);
 
-            ActualizarListas();
-            BorrarTodo();
+                ActualizarListas();
+                BorrarTodo();
+            }
+            else
+                MessageBox.Show("No hay ningún Vuelo seleccionado.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private void BotonAviones_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Aplicación aún en desarrollo, característica aún no disponible.",
+                "Información", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void BotonBilletes_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Aplicación aún en desarrollo, característica aún no disponible.",
+                "Información", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

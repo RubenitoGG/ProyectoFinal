@@ -131,6 +131,11 @@ namespace GestorAeropuerto.Ventanas
             frameVentana.Content = frameEmpleados;
         }
 
-        
+        private void menuSalir_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
+        }
     }
 }

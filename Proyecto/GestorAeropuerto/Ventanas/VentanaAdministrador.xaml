@@ -11,6 +11,7 @@
             <MenuItem x:Name="menuAerolineas" FontSize="14" Header="Aerolineas" Height="35" Width="162" Background="#0060A8DA" Click="MenuAerolineas_Click"/>
             <MenuItem x:Name="menuVuelos" FontSize="14" Header="Vuelos" Height="35" Width="119" Background="#0060A8DA" Click="MenuVuelos_Click"/>
             <MenuItem x:Name="menuEmpleados" FontSize="14" Header="Empleados" Height="35" Width="175" Background="#0060A8DA" Click="MenuEmpleados_Click"/>
+            <MenuItem x:Name="menuSalir" FontSize="14" Header="Salir" Margin="250,0,0,0" Height="35" Width="175" Background="#00DA6060" Click="menuSalir_Click"/>
         </Menu>
         <Frame x:Name="frameVentana" Content="" HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="996" Margin="10,40,0,0" NavigationUIVisibility="Hidden"/>
 

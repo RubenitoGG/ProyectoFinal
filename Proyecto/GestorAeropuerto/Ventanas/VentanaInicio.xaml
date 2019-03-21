@@ -10,8 +10,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="BotonComprar" Content="Comprar vuelo" HorizontalAlignment="Center" Margin="331,378,331,225" VerticalAlignment="Center" Width="356" Height="68"/>
+        <Button x:Name="BotonComprar" Content="Comprar vuelo" HorizontalAlignment="Center" Margin="331,378,331,225" VerticalAlignment="Center" Width="356" Height="68" Click="BotonComprar_Click"/>
         <Button x:Name="BotonAdministrador" Content="Entrar Modo Administrador" HorizontalAlignment="Center" Margin="368,451,368,192" VerticalAlignment="Center" Width="282" Height="28" Background="#002196F3" BorderBrush="#002196F3" Foreground="#FF078507" Click="BotonAdministrador_Click"/>
+        <Image HorizontalAlignment="Center" Height="200" Margin="0,-200,0,0" VerticalAlignment="Center" Width="200" Source="/img/Logo.png"/>
 
     </Grid>
 </Window>

@@ -270,9 +270,9 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
                     MessageBox.Show("Campos incorrectos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     ventana.frameVentana.Content = new FrameEmpleados(ventana);
                 }
-                
+
                 // Actualizamos la lista:
-                if (this.comboAerolinea.SelectedItem != null) 
+                if (this.comboAerolinea.SelectedItem != null)
                     ActualizarLista(this.comboAerolinea.SelectedItem.ToString());
             }
         }
@@ -299,17 +299,18 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             {
                 // Borramos el empleado:
                 uow.EmpleadoRepositorio.Delete(this.empleado);
+                // Borramos los campos:
+                BorrarCampos();
+
+                // Pasamos al modo añadir:
+                nuevo = true;
+                BotonAñadir.Content = "Añadir";
+
+                // Actualizamos la lista:
+                ActualizarLista(this.comboAerolinea.SelectedItem.ToString());
             }
-
-            // Borramos los campos:
-            BorrarCampos();
-
-            // Pasamos al modo añadir:
-            nuevo = true;
-            BotonAñadir.Content = "Añadir";
-
-            // Actualizamos la lista:
-            ActualizarLista(this.comboAerolinea.SelectedItem.ToString());
+            else
+                MessageBox.Show("No hay ningún Empleado seleccionado.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

@@ -31,5 +31,11 @@ namespace GestorAeropuerto
             VentanaLogin nuevaVentana = new VentanaLogin(this);
             nuevaVentana.Show();
         }
+
+        private void BotonComprar_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Aplicación aún en desarrollo, no disponible la reserva de vuelos.\n¡Disculpe las molestias!",
+                "Información", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }

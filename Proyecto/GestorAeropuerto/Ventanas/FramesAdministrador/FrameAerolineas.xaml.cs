@@ -97,21 +97,40 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
         private void BotonEliminar_Click(object sender, RoutedEventArgs e)
         {
             // Comprobamos si tenemos seleccionada una Aerolínea:
-            if(aero != null)
+            if (aero != null)
             {
-                // Borramos la Aerolínea:
-                uow.AerolineaRepositorio.Delete(aero);
+                // Mensaje para confirmar la eliminación:
+                if (MessageBox.Show("¿Estás seguro?\nSi borras esta Aerolínea se borrarán todos los Empleados y Vuelos asignados a la misma.",
+                    "Info", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+                {
+                    // Borramos los Vuelos que pertenecen a esa Aerolínea:
+                    foreach (Vuelo vuelo in uow.VueloRepositorio.Get())
+                    {
+                        if (vuelo.Aerolinea == aero)
+                            uow.VueloRepositorio.Delete(vuelo);
+                    }
 
-                // Borramos la selección y el TextBox:
-                aero = null;
-                listaAerolineas.SelectedItem = null;
-                this.textoTelefono.Text = "";
+                    // Borramos los Empleados que pertenecen a esa Aerolínea:
+                    foreach (Empleado empleado in uow.EmpleadoRepositorio.Get())
+                    {
+                        if (empleado.Aerolinea == aero)
+                            uow.EmpleadoRepositorio.Delete(empleado);
+                    }
 
-                // Mensaje de Aerolínea borra:
-                MessageBox.Show("Aerolínea eliminada correctamente.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                    // Borramos la Aerolínea:
+                    uow.AerolineaRepositorio.Delete(aero);
 
-                // Actualizamos la lista de Aerolíneas:
-                ActualizarAerolineas();
+                    // Borramos la selección y el TextBox:
+                    aero = null;
+                    listaAerolineas.SelectedItem = null;
+                    this.textoTelefono.Text = "";
+
+                    // Mensaje de Aerolínea borra:
+                    MessageBox.Show("Aerolínea eliminada correctamente.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    // Actualizamos la lista de Aerolíneas:
+                    ActualizarAerolineas();
+                }
             }
             else // Si no sacamos un mensaje:
             {

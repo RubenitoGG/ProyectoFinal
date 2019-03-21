@@ -225,10 +225,11 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             // Si tenemos un cargo seleccionado:
             if (this.cargo != null)
             {
+                // Mensaje para confirmar la eliminación:
                 if (MessageBox.Show("¿Estás seguro?\nSi borras este Cargo se borrarán todos los Empleados asignados al mismo.",
                     "Info", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
                 {
-                    // Borramos los usuarios que tengan ese cargo:
+                    // Borramos los Empleados que tengan ese Cargo:
                     foreach (Empleado empleado in uow.EmpleadoRepositorio.Get())
                     {
                         if (empleado.Cargo == this.cargo)
@@ -245,6 +246,8 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
                     ActualizarLista();
                 }
             }
+            else
+                MessageBox.Show("No hay ningún Cargo seleccionado.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }
