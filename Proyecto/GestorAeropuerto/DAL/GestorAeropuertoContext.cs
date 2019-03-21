@@ -22,7 +22,15 @@ namespace GestorAeropuerto.DAL
         public virtual DbSet<Vuelo> Vuelo { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
 
+        class CrearDB : CreateDatabaseIfNotExists<GestorAeropuertoContext>
+        {
+            protected override void Seed(GestorAeropuertoContext context)
+            {
 
+
+                base.Seed(context);
+            }
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
