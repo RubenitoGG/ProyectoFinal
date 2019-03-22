@@ -312,5 +312,15 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             else
                 MessageBox.Show("No hay ningún Empleado seleccionado.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
+
+        private void BotonAyuda_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("- Para añadir un nuevo Empleado: tienes que completar todos los datos y pulsar en el botón 'Añadir'.\n" +
+               "- Para actualizar un Empleado: selecciona uno en la lista de la izquierda, cambia los datos y pulsa el botón 'Actualizar'.\n" +
+               "- Para borrar un Empleado: selecciona uno en la lista de la izquierda y pulsa el botón 'Eliminar'.\n" +
+               "- El botón de 'Borrar Campos' deselecciona el Empleado seleccionado para poder crear uno nuevo.\n" +
+               "- El botón de 'Modificar Cargos' te mueve a la pestaña de Cargos dónde puedes crear nuevos o eliminar Cargos.",
+               "Ayuda", MessageBoxButton.OK, MessageBoxImage.Question);
+        }
     }
 }

@@ -218,5 +218,15 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             MessageBox.Show("Aplicación aún en desarrollo, característica aún no disponible.",
                 "Información", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        private void BotonAyuda_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("- Para añadir un nuevo Vuelo: tienes que completar todos los datos y pulsar en el botón 'Añadir'.\n" +
+               "- Para actualizar un Vuelo: selecciona uno en la lista de la izquierda, cambia los datos y pulsa el botón 'Actualizar'.\n" +
+               "- Para borrar un Vuelo: selecciona uno en la lista de la izquierda y pulsa el botón 'Eliminar'.\n" +
+               "- El botón de 'Aviones' te mueve a la pestaña de Aviones dónde puedes añadir y eliminar aviones a ese Vuelo (FUNCIÓN AÚN NO DISPONIBLE).\n" +
+               "- El botón de 'Billetes' te mueve a la pestaña de Billetes dónde puedes añadir y eliminar Billetes a ese Vuelo (FUNCIÓN AÚN NO DISPONIBLE).",
+               "Ayuda", MessageBoxButton.OK, MessageBoxImage.Question);
+        }
     }
 }

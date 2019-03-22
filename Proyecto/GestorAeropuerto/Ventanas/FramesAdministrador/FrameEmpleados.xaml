@@ -28,5 +28,6 @@
         <ComboBox x:Name="comboGenero" HorizontalAlignment="Left" Margin="786,221,0,0" VerticalAlignment="Top" Width="135"/>
         <ComboBox x:Name="comboCargo" HorizontalAlignment="Left" Margin="786,268,0,0" VerticalAlignment="Top" Width="135"/>
         <Button x:Name="BotonCargo" Content="Modificar Cargos" HorizontalAlignment="Left" Margin="714,322,0,0" VerticalAlignment="Top" Width="225" Height="38" Click="BotonCargo_Click"/>
+        <Button x:Name="BotonAyuda" Content="Ayuda" HorizontalAlignment="Left" Margin="911,577,0,0" VerticalAlignment="Top" Width="75" Click="BotonAyuda_Click"/>
     </Grid>
 </Page>

@@ -249,5 +249,13 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             else
                 MessageBox.Show("No hay ningún Cargo seleccionado.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
+
+        private void BotonAyuda_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("- Para añadir un nuevo Cargo: tienes que completar todos los datos y pulsar en el botón 'Añadir'.\n" +
+               "- Para actualizar un Cargo: selecciona uno en la lista de la izquierda, cambia los datos y pulsa el botón 'Actualizar'.\n" +
+               "- Para borrar un Cargo: selecciona uno en la lista de la izquierda y pulsa el botón 'Eliminar'.\n" +
+               "- El botón de 'Nuevo' deselecciona el Cargo seleccionado para poder crear uno nuevo.", "Ayuda", MessageBoxButton.OK, MessageBoxImage.Question);
+        }
     }
 }

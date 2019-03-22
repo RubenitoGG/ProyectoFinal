@@ -37,5 +37,11 @@ namespace GestorAeropuerto
             MessageBox.Show("Aplicación aún en desarrollo, no disponible la reserva de vuelos.\n¡Disculpe las molestias!",
                 "Información", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        private void BotonAyuda_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("- Si quieres reservar un vuelo pulsa el botón grande del centro de la pantalla.\n" +
+                "- Si eres un empleado y quieres administrar la aplicación pulsa dónde dice 'Entrar Modo Administrador'.", "Ayuda", MessageBoxButton.OK, MessageBoxImage.Question);
+        }
     }
 }

@@ -15,5 +15,6 @@
         <Button x:Name="BotonAñadir" Content="Añadir" HorizontalAlignment="Left" Margin="504,487,0,0" VerticalAlignment="Top" Width="225" Height="39" Click="BotonAñadir_Click"/>
         <Label Content="Teléfono:" HorizontalAlignment="Left" Margin="504,132,0,0" VerticalAlignment="Top" FontSize="16"/>
         <TextBox x:Name="textoTelefono" HorizontalAlignment="Left" Height="30" Margin="510,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" FontSize="16" IsReadOnly="True"/>
+        <Button x:Name="BotonAyuda" Content="Ayuda" HorizontalAlignment="Left" Margin="911,577,0,0" VerticalAlignment="Top" Width="75" Click="BotonAyuda_Click"/>
     </Grid>
 </Page>

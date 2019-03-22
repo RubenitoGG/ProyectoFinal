@@ -137,5 +137,12 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
                 MessageBox.Show("No hay ninguna Aerolínea seleccionada.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void BotonAyuda_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("- Para añadir una nueva Aerolínea: pulsa en el botón 'Añadir' y se abrirá una ventana para introducir los datos.\n" +
+                           "- Para borrar una Aerolínea: selecciona una en la lista de la izquierda y pulsa el botón 'Eliminar'.\n",
+                           "Ayuda", MessageBoxButton.OK, MessageBoxImage.Question);
+        }
     }
 }

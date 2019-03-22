@@ -207,5 +207,13 @@ namespace GestorAeropuerto.Ventanas.FramesAdministrador
             // Refrescamos la lista:
             MostrarUsuarios();
         }
+
+        private void BotonAyuda_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("- Para añadir un nuevo Usuario: tienes que escribir todos los datos y pulsar en el botón 'Añadir'.\n" +
+               "- Para actualizar un Usuario: selecciona uno en la lista de la izquierda, cambia los datos y pulsa el botón 'Modificar'.\n" +
+               "- Para borrar un Usuario: selecciona uno en la lista de la izquierda y pulsa el botón 'Eliminar'.\n" +
+               "- El botón de 'Nuevo' deselecciona el Usuario seleccionado para poder crear uno nuevo.", "Ayuda", MessageBoxButton.OK, MessageBoxImage.Question);
+        }
     }
 }

@@ -14,12 +14,13 @@
         <Label Content="Id:" HorizontalAlignment="Left" Margin="563,155,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Nombre:" HorizontalAlignment="Left" Margin="518,199,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Sueldo:" HorizontalAlignment="Left" Margin="528,247,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="textoId" HorizontalAlignment="Left" Height="39" Margin="609,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16" IsReadOnly="True"/>
-        <TextBox x:Name="textoNombre" HorizontalAlignment="Left" Height="39" Margin="609,191,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16"/>
-        <TextBox x:Name="textoSueldo" HorizontalAlignment="Left" Height="39" Margin="609,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="16"/>
-        <Button x:Name="BotonNuevo" Content="Nuevo" HorizontalAlignment="Left" Margin="504,439,0,0" VerticalAlignment="Top" Width="225" Height="39" Click="BotonNuevo_Click"/>
-        <Button x:Name="BotonEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="504,538,0,0" VerticalAlignment="Top" Width="225" Height="39" Background="#FFFF4D4D" BorderBrush="#FFFF4D4D" Click="BotonEliminar_Click"/>
-        <Button x:Name="BotonAñadir" Content="Añadir" HorizontalAlignment="Left" Margin="504,489,0,0" VerticalAlignment="Top" Width="225" Height="39" Click="BotonAñadir_Click"/>
+        <TextBox x:Name="textoId" HorizontalAlignment="Left" Height="39" Margin="609,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154" FontSize="16" IsReadOnly="True"/>
+        <TextBox x:Name="textoNombre" HorizontalAlignment="Left" Height="39" Margin="609,191,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154" FontSize="16"/>
+        <TextBox x:Name="textoSueldo" HorizontalAlignment="Left" Height="39" Margin="609,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="154" FontSize="16"/>
+        <Button x:Name="BotonNuevo" Content="Nuevo" HorizontalAlignment="Left" Margin="504,439,0,0" VerticalAlignment="Top" Width="259" Height="39" Click="BotonNuevo_Click"/>
+        <Button x:Name="BotonEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="504,538,0,0" VerticalAlignment="Top" Width="259" Height="39" Background="#FFFF4D4D" BorderBrush="#FFFF4D4D" Click="BotonEliminar_Click"/>
+        <Button x:Name="BotonAñadir" Content="Añadir" HorizontalAlignment="Left" Margin="504,489,0,0" VerticalAlignment="Top" Width="259" Height="39" Click="BotonAñadir_Click"/>
         <Button x:Name="BotonVolver" Content="Volver" HorizontalAlignment="Left" Margin="26,25,0,0" VerticalAlignment="Top" Width="118" Height="39" Background="#FFFF4D4D" BorderBrush="#FFFF4D4D" Click="BotonVolver_Click"/>
+        <Button x:Name="BotonAyuda" Content="Ayuda" HorizontalAlignment="Left" Margin="911,577,0,0" VerticalAlignment="Top" Width="75" Click="BotonAyuda_Click"/>
     </Grid>
 </Page>

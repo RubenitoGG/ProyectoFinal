@@ -28,5 +28,6 @@
         <Button x:Name="BotonAviones" Content="Aviones" HorizontalAlignment="Left" Margin="80,538,0,0" VerticalAlignment="Top" Width="278" Height="39" Click="BotonAviones_Click"/>
         <ComboBox x:Name="comboBoxSalida" HorizontalAlignment="Left" Margin="477,287,0,0" VerticalAlignment="Top" Width="120" Height="31"/>
         <ComboBox x:Name="comboBoxLlegada" HorizontalAlignment="Left" Margin="477,331,0,0" VerticalAlignment="Top" Width="120" Height="31"/>
+        <Button x:Name="BotonAyuda" Content="Ayuda" HorizontalAlignment="Left" Margin="911,577,0,0" VerticalAlignment="Top" Width="75" Click="BotonAyuda_Click"/>
     </Grid>
 </Page>

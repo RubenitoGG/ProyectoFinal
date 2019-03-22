@@ -1,0 +1,13 @@
+Usuarios y Contraseñas para entrar en la aplicación:
+
+Usuario: admin
+Contraseña: abc123.
+
+Usuario: Ruben
+Contraseña: hola
+
+Usuario: Ivan
+Contraseña: hola2
+
+Usuario: Pepe
+Contraseña: juju.
